@@ -19,6 +19,8 @@ class BlurWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
 
         makeStatusNotification("Blurring image", appContext)
 
+        sleep()
+
         return try {
             if (TextUtils.isEmpty(resourceUri)) {
                 Log.e(TAG, "Invalid input uri")
@@ -35,7 +37,7 @@ class BlurWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
             // Write bitmap to a temp file
             val outputUri = writeBitmapToFile(appContext, output)
 
-            makeStatusNotification("Output is $outputUri", appContext)
+            //makeStatusNotification("Output is $outputUri", appContext)
 
             val outputData = workDataOf(KEY_IMAGE_URI to outputUri.toString())
 
